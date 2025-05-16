@@ -4,6 +4,7 @@ from voter_checker import is_eligible_to_vote
 
 class TestVoterEligibility(unittest.TestCase):
 
+
     def test_valid_voter(self):
         self.assertTrue(is_eligible_to_vote(18, True))
 
@@ -23,6 +24,7 @@ class TestVoterEligibility(unittest.TestCase):
         with self.assertRaises(ValueError):
             is_eligible_to_vote(-5, True)
 
-if__name__=="__main__": # type: ignore
-unittest.main()
+
+if __name__=="__main__":  # type: ignore
+    unittest.main()
 
