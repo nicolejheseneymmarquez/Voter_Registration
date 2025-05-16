@@ -1,39 +1,29 @@
-name: Python CI Pipeline
-
+name: Voter Registration Unit Tests CI PIPELINE
 
 on: [push, pull_request]
 
-
 jobs:
- test:
-   runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-   strategy:
-     matrix:
-       python-version: ["3.8", "3.9", "3.10", "3.11"]
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pycodestyle  # Install pycodestyle for linting
 
-   steps:
-     - name: Checkout Repository
-       uses: actions/checkout@v3
+      - name: Lint Python files with Pycodestyle
+        run: |
+          pycodestyle .  # Run pycodestyle to lint the code
 
-
-     - name: Set up Python
-       uses: actions/setup-python@v4
-       with:
-         python-version: ${{ matrix.python-version }}
-
-
-     - name: Install Dependencies
-       run: |
-         python -m pip install --upgrade pip
-         pip install -r requirements.txt
-
-
-     - name: Run Code Linting (Flake8)
-       run: flake8 . --max-line-length=88
-
-
-     - name: Run Unit Tests and Coverage Report
-       run: unittest --cov=app
+      - name: Run tests with unittest
+        run: |
+          python -m unittest discover -v # Discover and run tests using unittest
