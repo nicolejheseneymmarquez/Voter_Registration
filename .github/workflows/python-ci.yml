@@ -36,5 +36,4 @@ jobs:
 
 
      - name: Run Unit Tests and Coverage Report
-       run: pytest --cov=app
-       
+       run: unittest --cov=app
