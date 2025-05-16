@@ -24,6 +24,5 @@ class TestVoterEligibility(unittest.TestCase):
             is_eligible_to_vote(-5, True)
 
 
-if __name__ == "__main__" :  # type: ignore
+if __name__ == "__main__":  # type: ignore
     unittest.main()
-
