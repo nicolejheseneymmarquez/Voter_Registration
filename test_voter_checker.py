@@ -11,3 +11,4 @@ class TestVoterEligibility(unittest.TestCase):
 
     def test_valid_voter_underage(self):
         self.assertTrue(is_eligible_to_vote(17, False))
+
